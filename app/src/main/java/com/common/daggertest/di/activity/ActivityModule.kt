@@ -1,7 +1,7 @@
 package com.common.daggertest.di.activity
 
 import com.common.daggertest.di.main.MainActivityModule
-import com.common.daggertest.ui.MainActivity
+import com.common.daggertest.ui.activity.MainActivity
 import com.common.daggertest.di.scope.ActivityScope
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -11,6 +11,7 @@ import dagger.android.ContributesAndroidInjector
  */
 @Module
 abstract class ActivityModule {
+
     @ActivityScope
     @ContributesAndroidInjector(modules = [MainActivityModule::class])
     abstract fun contributeMainActivityInjector(): MainActivity

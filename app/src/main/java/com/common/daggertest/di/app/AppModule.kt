@@ -10,7 +10,7 @@ import javax.inject.Singleton
 /**
  * Created by Kirill Stoianov on 22/07/18.
  */
-@Module(includes = [ActivityModule::class])
+@Module
 class AppModule {
 
     @Provides

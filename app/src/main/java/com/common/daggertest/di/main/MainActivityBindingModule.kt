@@ -1,7 +1,7 @@
 package com.common.daggertest.di.main
 
 import android.app.Activity
-import com.common.daggertest.ui.MainActivity
+import com.common.daggertest.ui.activity.MainActivity
 import dagger.Binds
 import dagger.Module
 import dagger.android.ActivityKey
@@ -16,11 +16,9 @@ import dagger.multibindings.IntoMap
 @Module(subcomponents = [MainActivitySubComponent::class])
 abstract class MainActivityBindingModule {
 
-//    @ContributesAndroidInjector(modules = [(MainActivityModule::class)])
-//    abstract fun mainActivity(): MainActivity
-
     @Binds
     @IntoMap
     @ActivityKey(MainActivity::class)
-    abstract fun bindMainActivityInjectorFactory(builder: MainActivitySubComponent.Builder): AndroidInjector.Factory<out Activity>
+    abstract fun bindMainActivityInjectorFactory(builder: MainActivitySubComponent.Builder)
+            : AndroidInjector.Factory<out Activity>
 }
