@@ -1,16 +1,15 @@
-package com.common.daggertest.di.main
+package com.common.daggertest.di.activity
 
 import com.common.daggertest.di.factory.FactoryModule
+import com.common.daggertest.di.scope.ActivityScope
 import com.common.daggertest.di.scope.FragmentScope
+import com.common.daggertest.ui.activity.MainActivity
 import com.common.daggertest.ui.fragment.MainFragment
 import com.common.daggertest.ui.fragment.SecondaryFragment
+import com.common.daggertest.mvp.router.impl.MainRouter
+import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import com.common.daggertest.viper.MainRouter
-import dagger.Binds
-import com.common.daggertest.di.scope.ActivityScope
-import com.common.daggertest.ui.activity.MainActivity
-import com.common.daggertest.viper.Router
 
 
 /**
@@ -18,6 +17,10 @@ import com.common.daggertest.viper.Router
  */
 @Module
 abstract class MainActivityModule {
+
+    @ActivityScope
+    @Binds
+    abstract fun bindsMainActivityToMainView(mainActivity: MainActivity): MainRouter
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [MainFragmentModule::class])

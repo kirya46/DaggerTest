@@ -2,15 +2,13 @@ package com.common.daggertest.ui.fragment
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.common.daggertest.R
-import com.common.daggertest.ui.activity.MainActivity
+import com.common.daggertest.mvp.interactor.impl.MainInteractor
 import com.common.daggertest.ui.base.BaseFragment
-import com.common.daggertest.util.AnyFactory
-import com.common.daggertest.viper.MainRouter
+import com.common.daggertest.mvp.router.impl.MainRouter
 import kotlinx.android.synthetic.main.fragment_main.*
 import javax.inject.Inject
 
@@ -24,10 +22,11 @@ class MainFragment : BaseFragment() {
     }
 
     @Inject
-    lateinit var anyFactory: AnyFactory
+    lateinit var router: MainRouter
 
     @Inject
-    lateinit var router: MainRouter
+    lateinit var interactor: MainInteractor
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_main, container, false)
@@ -36,9 +35,7 @@ class MainFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.wtf(TAG, router.hashCode().toString())
-
-        tvContent.text = String.format("%s %s", MainFragment::class.java.simpleName, anyFactory.getMessage())
+        tvContent.text = "Last sync: ${appPreferences.getLastSync()}\nFetch user: ${interactor.fetchUser()}"
 
         Handler().postDelayed({ router.nextStep() }, 3000)
     }

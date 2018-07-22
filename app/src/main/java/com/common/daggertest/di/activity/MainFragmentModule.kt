@@ -1,4 +1,4 @@
-package com.common.daggertest.di.main
+package com.common.daggertest.di.activity
 
 import com.common.daggertest.di.factory.FactoryModule
 import dagger.Module
