@@ -1,12 +1,13 @@
 package com.common.daggertest.di.activity
 
-import com.common.daggertest.di.factory.FactoryModule
+import com.common.daggertest.di.db.DataBaseModule
 import com.common.daggertest.di.scope.ActivityScope
 import com.common.daggertest.di.scope.FragmentScope
+import com.common.daggertest.mvp.MainContract
+import com.common.daggertest.mvp.MainPresenter
 import com.common.daggertest.ui.activity.MainActivity
-import com.common.daggertest.ui.fragment.MainFragment
-import com.common.daggertest.ui.fragment.SecondaryFragment
-import com.common.daggertest.mvp.router.impl.MainRouter
+import com.common.daggertest.ui.fragment.UserFragment
+import com.common.daggertest.ui.fragment.DetailsFragment
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -20,13 +21,17 @@ abstract class MainActivityModule {
 
     @ActivityScope
     @Binds
-    abstract fun bindsMainActivityToMainView(mainActivity: MainActivity): MainRouter
+    abstract fun bindsMainActivityToMainRouter(mainActivity: MainActivity): MainContract.Router
+
+    @ActivityScope
+    @Binds
+    abstract fun bindsMainActivityToMainView(mainActivity: MainActivity): MainContract.View
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [MainFragmentModule::class])
-    abstract fun bindMainFragment(): MainFragment
+    @ContributesAndroidInjector(modules = [UserFragmentModule::class])
+    abstract fun bindMainFragment(): UserFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [FactoryModule::class])
-    abstract fun bindSecondaryFragment(): SecondaryFragment
+    @ContributesAndroidInjector(modules = [DataBaseModule::class])
+    abstract fun bindSecondaryFragment(): DetailsFragment
 }

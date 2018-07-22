@@ -1,6 +1,7 @@
 package com.common.daggertest.ui.base
 
 import com.common.daggertest.api.ApiService
+import com.common.daggertest.db.AppDataBase
 import com.common.daggertest.util.AppPreferences
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -10,6 +11,8 @@ import javax.inject.Inject
  */
 open class BaseFragment : DaggerFragment() {
 
+    @Inject
+    lateinit var appDataBase: AppDataBase
 
     @Inject
     lateinit var apiService: ApiService
