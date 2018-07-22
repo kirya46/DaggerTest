@@ -17,4 +17,8 @@ abstract class BaseActivity : DaggerAppCompatActivity(), HasSupportFragmentInjec
 
     @Inject
     lateinit var appPreferences: AppPreferences
+
+    //can be declared in AppComponent or with scope Singleton in DataBaseModule
+//    @Inject
+//    lateinit var appDataBase: AppDataBase
 }

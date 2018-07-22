@@ -2,9 +2,9 @@ package com.common.daggertest.di.db
 
 import android.content.Context
 import com.common.daggertest.db.AppDataBase
-import com.common.daggertest.di.scope.ActivityScope
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 /**
  * Created by Kirill Stoianov on 21/07/18.
@@ -13,5 +13,6 @@ import dagger.Provides
 class DataBaseModule {
 
     @Provides
+    @Singleton
     fun provideAppDatabase(context: Context): AppDataBase = AppDataBase(context)
 }

@@ -3,6 +3,8 @@ package com.common.daggertest.di.network
 import com.common.daggertest.AppController
 import com.common.daggertest.R
 import com.common.daggertest.api.ApiService
+import com.common.daggertest.db.AppDataBase
+import com.common.daggertest.entity.User
 import com.common.daggertest.util.AppPreferences
 import dagger.Module
 import dagger.Provides

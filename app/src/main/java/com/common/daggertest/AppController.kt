@@ -4,6 +4,7 @@ package com.common.daggertest
 import com.common.daggertest.di.AppComponent
 import com.common.daggertest.di.DaggerAppComponent
 import com.common.daggertest.di.app.AppModule
+import com.common.daggertest.di.db.DataBaseModule
 import com.common.daggertest.di.network.NetworkModule
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
