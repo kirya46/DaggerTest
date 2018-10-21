@@ -6,6 +6,7 @@ import com.common.daggertest.di.DaggerAppComponent
 import com.common.daggertest.di.app.AppModule
 import com.common.daggertest.di.db.DataBaseModule
 import com.common.daggertest.di.network.NetworkModule
+import com.common.daggertest.di.repo.RepoModule
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
@@ -18,6 +19,7 @@ class AppController : DaggerApplication() {
         val appComponent: AppComponent = DaggerAppComponent.builder()
                 .appModule(AppModule(this@AppController))
                 .networkModule(NetworkModule(this@AppController))
+                .repoModule(RepoModule())
                 .application(this)
                 .build()
         appComponent.inject(this@AppController)

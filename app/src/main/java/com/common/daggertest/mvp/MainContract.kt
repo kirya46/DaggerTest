@@ -17,7 +17,7 @@ interface MainContract {
     }
 
     interface Interactor {
-        fun fetchUser():User
+        fun fetchUser(success: (user: User) -> Unit, error: (exception: Exception) -> Unit)
     }
 
     interface InteractorCallback {

@@ -16,8 +16,14 @@ class MainPresenter @Inject constructor(
 ) : MainContract.Presenter, MainContract.InteractorCallback, Serializable {
 
     override fun fetchUser() {
-        val u = interactor.fetchUser()
-        onSuccess(u)
+        val u = interactor.fetchUser(
+                success = { user ->
+                    onSuccess(user)
+                },
+                error = { exception ->
+                    onError(exception)
+                })
+
     }
 
     override fun openUserDetails(user: User) {

@@ -6,6 +6,7 @@ import com.common.daggertest.di.activity.ActivityBuilder
 import com.common.daggertest.di.app.AppModule
 import com.common.daggertest.di.db.DataBaseModule
 import com.common.daggertest.di.network.NetworkModule
+import com.common.daggertest.di.repo.RepoModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -20,7 +21,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     AndroidInjectionModule::class, AndroidSupportInjectionModule::class,
-    AppModule::class, ActivityBuilder::class,NetworkModule::class,DataBaseModule::class
+    AppModule::class, ActivityBuilder::class,NetworkModule::class,DataBaseModule::class,
+    RepoModule::class
 ])
 interface AppComponent : AndroidInjector<AppController> {
 
@@ -32,6 +34,7 @@ interface AppComponent : AndroidInjector<AppController> {
         fun application(application: Application): Builder
         fun appModule(appModule: AppModule):Builder
         fun networkModule(networkModule: NetworkModule):Builder
+        fun repoModule(repoModule: RepoModule):Builder
 
         fun build(): AppComponent
     }

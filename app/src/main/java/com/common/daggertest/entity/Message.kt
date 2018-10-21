@@ -5,22 +5,17 @@ import com.raizlabs.android.dbflow.annotation.Column
 import com.raizlabs.android.dbflow.annotation.PrimaryKey
 import com.raizlabs.android.dbflow.annotation.Table
 import com.raizlabs.android.dbflow.structure.BaseModel
-import java.io.Serializable
 import java.util.*
 
 /**
- * Created by Kirill Stoianov on 22/07/18.
+ * Created by Kirill Stoianov on 20/10/2018.
  */
 @Table(database = AppDataBase::class)
-class User : BaseModel(), Serializable {
+class Message : BaseModel() {
     @Column
     @PrimaryKey
-    var id: Long = Random().nextLong()
+    var id: String = UUID.randomUUID().toString()
 
     @Column
-    var lastSync: Long = System.currentTimeMillis()
-
-    override fun toString(): String {
-        return "User[id = $id, lastSync = $lastSync]"
-    }
+    var content: String? = null
 }
